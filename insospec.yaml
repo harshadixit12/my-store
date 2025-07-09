@@ -5,6 +5,121 @@ meta:
   created: 1752032651287
   modified: 1752032651287
   description: ""
+collection:
+  - name: products
+    meta:
+      id: fld_f9eed80183aa4e2d9d7add9bfc84acd5
+      created: 1752032701068
+      modified: 1752032701068
+      sortKey: -1752032701068
+      description: ""
+    children:
+      - url: "{{ _.base_url }}/products"
+        name: List all products
+        meta:
+          id: req_07191cfbdff04a8ebc3fce52ef84dbd4
+          created: 1752032701068
+          modified: 1752032701068
+          isPrivate: false
+          description: List all products
+          sortKey: -1752032701068
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - url: "{{ _.base_url }}/orders/{{ _.id }}"
+    name: Get an order by ID
+    meta:
+      id: req_2eeb34ffa1024656adf519a671430433
+      created: 1752032701069
+      modified: 1752032701069
+      isPrivate: false
+      description: ""
+      sortKey: -1752032701069
+    method: GET
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/orders"
+    name: Create an order (max 5 items)
+    meta:
+      id: req_30695acecb914be0978bf46658573382
+      created: 1752032701069
+      modified: 1752032701069
+      isPrivate: false
+      description: ""
+      sortKey: -1752032701069
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "productIds": [
+            0
+          ]
+        }
+    headers:
+      - name: Content-Type
+        disabled: false
+        value: application/json
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/orders"
+    name: List all orders
+    meta:
+      id: req_90f37c54e7784595904055732c8f90d2
+      created: 1752032701069
+      modified: 1752032701069
+      isPrivate: false
+      description: ""
+      sortKey: -1752032701069
+    method: GET
+    parameters:
+      - name: order_id
+        disabled: true
+        value: "0"
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: "{{ _.base_url }}/orders/{{ _.id }}"
+    name: Cancel an order
+    meta:
+      id: req_29403c6d1b514757a0888262d840f5b9
+      created: 1752032701070
+      modified: 1752032701070
+      isPrivate: false
+      description: ""
+      sortKey: -1752032701070
+    method: DELETE
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:
@@ -16,8 +131,22 @@ environments:
   meta:
     id: env_5c94dd61e47951ccac6ff7ec022d6ad4e289df2a
     created: 1752032651290
-    modified: 1752032651290
+    modified: 1752032701067
     isPrivate: false
+  data:
+    base_url: "{{ _.scheme }}://{{ _.host }}{{ _.base_path }}"
+  subEnvironments:
+    - name: specenv
+      meta:
+        id: env_2b8c8bb89e974680aa8c6ee45aac8f69
+        created: 1752032701068
+        modified: 1752032717768
+        isPrivate: false
+        sortKey: 1752032701068
+      data:
+        scheme: http
+        base_path: ""
+        host: localhost:3000
 spec:
   contents:
     openapi: 3.0.3
