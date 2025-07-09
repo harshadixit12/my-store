@@ -25,7 +25,7 @@ jobs:
         run: inso lint spec swagger.yaml --ci --workingDir ${{ github.workspace }}
 
       - name: Run collection by ID
-        run: inso run collection wrk_2de023 -e env_2b8c8b --bail --workingDir ${{ github.workspace }}
+        run: inso run collection wrk_2de023 -e env_2b8c8b --bail --workingDir ${{ github.workspace }}/insospec.yaml
 
       - name: Run test suite "New Suite"
         run: inso run test "New Suite" --env specenv --ci --workingDir ${{ github.workspace }}
