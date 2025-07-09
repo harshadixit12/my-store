@@ -16,7 +16,7 @@ jobs:
       - name: Lint
         run: inso lint spec "swagger.yaml" --ci --workingDir ${{ github.workspace }}
       - name: Run collection
-        run: inso run test "My Collection" --env specenv --ci --workingDir ${{ github.workspace }}
+        run: inso run test "My Collection" --env specenv --ci
       - name: Run test suites
         run: inso run test "New Suite" --env specenv --ci --workingDir ${{ github.workspace }}
       - name: Run collection
