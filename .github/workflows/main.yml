@@ -9,10 +9,12 @@ jobs:
     steps:
       - uses: kong/setup-inso@v2
         with:
-          inso-version: 10.3.1
+          inso-version: 11.2.0
       - run: inso --version
       - name: Checkout branch
         uses: actions/checkout@v1
+      - name: Lint
+        run: inso lint spec "swagger.yaml" --ci --workingDir ${{ github.workspace }}
       - name: Run collection
         run: inso run collection wrk_2de023 -e env_2b8c8b --bail -w ${{ github.workspace }}/insospec.yaml
       - name: Run test suites
