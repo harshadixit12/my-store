@@ -16,4 +16,4 @@ jobs:
       - name: Lint
         run: inso lint spec "swagger.yaml" --ci --workingDir ${{ github.workspace }}
       - name: Run test suites
-        run: inso run test "Designer Demo" --env UnitTest --ci
+        run: inso run test "New Suite" --env UnitTest --ci --workingDir ${{ github.workspace }}
