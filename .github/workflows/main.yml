@@ -12,6 +12,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Install dependencies
+        run: npm install
+
+      - name: Start Node.js API server
+        run: |
+          node app.js &
+          npx wait-on http://localhost:3000
 
       - name: Install Inso CLI v11.2.0
         run: |
