@@ -1,23 +1,35 @@
 # .github/workflows/test.yml
+name: Run API Tests
+
 on:
   push:
     branches:
       - main
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: kong/setup-inso@v2
-        with:
-          inso-version: 11.2.0
-      - run: inso --version
-      - name: Checkout branch
-        uses: actions/checkout@v1
-      - name: Lint
-        run: inso lint spec "swagger.yaml" --ci --workingDir ${{ github.workspace }}
-      - name: Run collection
-        run: inso run collection wrk_2de023 -e env_2b8c8b --bail -w ${{ github.workspace }}/insospec.yaml
-      - name: Run test suites
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Inso CLI v11.2.0
+        run: |
+          curl -L https://github.com/Kong/insomnia/releases/download/v11.2.0/inso-v11.2.0-linux-x64.tar.gz \
+            -o inso.tar.gz
+          mkdir inso
+          tar -zxvf inso.tar.gz -C inso
+          sudo mv inso/inso /usr/local/bin/
+          inso --version
+
+      - name: Lint OpenAPI Spec
+        run: inso lint spec swagger.yaml --ci --workingDir ${{ github.workspace }}
+
+      - name: Run collection by ID
+        run: inso run collection wrk_2de023 -e env_2b8c8b --bail --workingDir ${{ github.workspace }}
+
+      - name: Run test suite "New Suite"
         run: inso run test "New Suite" --env specenv --ci --workingDir ${{ github.workspace }}
-      - name: Run collection
+
+      - name: Run test suite "My Collection"
         run: inso run test "My Collection" --env specenv --ci --workingDir ${{ github.workspace }}
