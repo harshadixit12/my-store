@@ -153,11 +153,11 @@ environments:
   data:
     base_url: "{{ _.scheme }}://{{ _.host }}{{ _.base_path }}"
   subEnvironments:
-    - name: OpenAPI env localhost:3000
+    - name: specenv
       meta:
         id: env_e178ee629e544fed8a588f69aa4c21c5
         created: 1752027508499
-        modified: 1752027508499
+        modified: 1752031630895
         isPrivate: false
         sortKey: 1752027508499
       data:
