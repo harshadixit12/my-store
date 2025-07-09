@@ -15,9 +15,9 @@ jobs:
 
       - name: Install Inso CLI v11.2.0
         run: |
-          curl -L https://github.com/Kong/insomnia/releases/download/core%4011.2.0/inso-linux-11.2.0.tar.xz --output inso.tar.gz
+          curl -L https://github.com/Kong/insomnia/releases/download/core%4011.2.0/inso-linux-11.2.0.tar.xz --output inso.tar.xz
           mkdir inso
-          tar -zxvf inso.tar.gz -C inso
+          tar -zxvf inso.tar.xz -C inso
           sudo mv inso/inso /usr/local/bin/
           inso --version
 
