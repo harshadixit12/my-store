@@ -55,7 +55,7 @@ collection:
     meta:
       id: req_30695acecb914be0978bf46658573382
       created: 1752032701069
-      modified: 1752032701069
+      modified: 1752036737444
       isPrivate: false
       description: ""
       sortKey: -1752032701069
@@ -64,9 +64,7 @@ collection:
       mimeType: application/json
       text: |-
         {
-          "productIds": [
-            0
-          ]
+          "productIds": {{productsToOrder}}
         }
     headers:
       - name: Content-Type
@@ -300,3 +298,26 @@ spec:
     id: spc_df7bddfbd1b240deb4e79dd859c5c059
     created: 1752032651289
     modified: 1752032678276
+testSuites:
+  - name: Order something and cancel
+    meta:
+      id: uts_ed00e4d7e86e4685b8ea1502af3bbfc0
+      created: 1752036430917
+      modified: 1752036442193
+      sortKey: -1752036430917
+    tests:
+      - name: Returns 200
+        meta:
+          id: ut_d4fbd0431d52499ca168bc493da41e70
+          created: 1752036442766
+          modified: 1752037119407
+          sortKey: -1752036442766
+        requestId: req_07191cfbdff04a8ebc3fce52ef84dbd4
+        code: |-
+          const response1 = await insomnia.send();
+          expect(response1.status).to.equal(200);
+
+          let products=JSON.parse(response1.data).map((obj) =>obj.id);
+
+          console.log(insomnia,products)
+          insomnia.environment.set("productToOrder",JSON.stringify(products));
