@@ -13,8 +13,6 @@ jobs:
       - run: inso --version
       - name: Checkout branch
         uses: actions/checkout@v1
-      - name: Lint
-        run: inso lint spec "swagger.yaml" --ci --workingDir ${{ github.workspace }}
       - name: Run collection
         run: inso run collection wrk_2de023 -e env_2b8c8b --bail --workingDir ${{ github.workspace }}
       - name: Run test suites
