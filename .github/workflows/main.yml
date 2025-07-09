@@ -17,8 +17,7 @@ jobs:
 
       - name: Start Node.js API server
         run: |
-          node app.js &
-          npx wait-on http://localhost:3000
+          node app.js 
 
       - name: Install Inso CLI v11.2.0
         run: |
