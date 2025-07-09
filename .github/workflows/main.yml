@@ -14,7 +14,7 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v1
       - name: Run collection
-        run: inso run collection wrk_2de023 -e env_2b8c8b --bail --workingDir ${{ github.workspace }}
+        run: inso run collection wrk_2de023 -e env_2b8c8b --bail -w ${{ github.workspace }}/insospec.yaml
       - name: Run test suites
         run: inso run test "New Suite" --env specenv --ci --workingDir ${{ github.workspace }}
       - name: Run collection
