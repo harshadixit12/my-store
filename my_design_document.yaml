@@ -24,6 +24,9 @@ collection:
           description: List all products
           sortKey: -1752027508500
         method: GET
+        scripts:
+          preRequest: ""
+          afterResponse: ""
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -32,6 +35,9 @@ collection:
             send: true
             store: true
           rebuildPath: true
+    scripts:
+      afterResponse: ""
+      preRequest: ""
   - url: "{{ _.base_url }}/orders/{{ _.id }}"
     name: Get an order by ID
     meta:
@@ -42,6 +48,9 @@ collection:
       description: ""
       sortKey: -1752027508500
     method: GET
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -70,8 +79,10 @@ collection:
         }
     headers:
       - name: Content-Type
-        disabled: false
         value: application/json
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -92,8 +103,11 @@ collection:
     method: GET
     parameters:
       - name: order_id
-        disabled: true
         value: "0"
+        disabled: true
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -112,6 +126,9 @@ collection:
       description: ""
       sortKey: -1752027508501
     method: DELETE
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
