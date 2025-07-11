@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+      - demo/*
 
 jobs:
   test:
@@ -27,14 +28,6 @@ jobs:
           sudo mv inso/inso /usr/local/bin/
           inso --version
 
-      - name: Lint OpenAPI Spec
-        run: inso lint spec swagger.yaml --ci --workingDir ${{ github.workspace }}
+      - name: Run test suite "place an order" 
+        run: inso run test "place an order" -e env_2b8c8b --workingDir ${{ github.workspace }}/insospec.yaml
 
-      - name: Run collection by ID
-        run: inso run collection wrk_2de023 -e env_2b8c8b --bail --workingDir ${{ github.workspace }}/insospec.yaml
-
-      - name: Run test suite "Order something and cancel" 
-        run: inso run test "Order something and cancel" -e env_2b8c8b --workingDir ${{ github.workspace }}/insospec.yaml
-
-      - name: Run test suite "My Collection"
-        run: inso run test "My Collection" --env specenv --ci --workingDir ${{ github.workspace }}

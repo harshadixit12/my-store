@@ -26,21 +26,4 @@ router.get('/', (req, res) => {
   res.json(orders);
 });
 
-router.get('/:id', (req, res) => {
-  const order = orders.find(o => o.id === parseInt(req.params.id));
-  if (!order) {
-    return res.status(404).json({ error: 'Order not found' });
-  }
-  res.json(order);
-});
-
-router.delete('/:id', (req, res) => {
-  const order = orders.find(o => o.id === parseInt(req.params.id));
-  if (!order) {
-    return res.status(404).json({ error: 'Order not found' });
-  }
-  order.status = 'cancelled';
-  res.status(204).send();
-});
-
 export default router;

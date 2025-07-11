@@ -1,0 +1,11 @@
+extends: spectral:oas
+
+rules:
+  get-no-request-body:
+    description: GET requests must not have a request body
+    message: "GET method at {{path}} should not have a requestBody"
+    given: $.paths[*].get
+    then:
+      field: requestBody
+      function: falsy
+

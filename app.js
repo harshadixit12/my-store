@@ -9,9 +9,6 @@ const port = 3000;
 
 app.use(express.json());
 
-const swaggerDocument = YAML.load('./swagger.yaml');
-app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
-
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
 

@@ -23,4 +23,21 @@ router.get('/', (req, res) => {
   res.json(products);
 });
 
+
+// Product by ID
+/*
+router.get('/:id', (req, res) => {
+  const productId = parseInt(req.params.id)
+  let product;
+  products.map((obj) => {
+    if (obj.id == productId) {
+      product = obj
+    }
+  })
+  if (product) {
+    return res.json(product);
+  }
+  res.status(404);
+});
+*/
 export default router;
