@@ -57,6 +57,7 @@ collection:
           sortKey: -1752239456530
         method: GET
         scripts:
+          preRequest: ""
           afterResponse: >-
             //http 200
 
@@ -96,6 +97,7 @@ collection:
           sortKey: -1752239456530
         method: GET
         scripts:
+          preRequest: ""
           afterResponse: >+
             
 
@@ -114,6 +116,9 @@ collection:
             send: true
             store: true
           rebuildPath: true
+    scripts:
+      afterResponse: ""
+      preRequest: ""
   - name: products
     meta:
       id: fld_98cfb43f789849bd94367e959926b89c
@@ -132,6 +137,9 @@ collection:
           description: List all products
           sortKey: -1752243110938
         method: GET
+        scripts:
+          preRequest: ""
+          afterResponse: ""
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -140,6 +148,9 @@ collection:
             send: true
             store: true
           rebuildPath: true
+    scripts:
+      afterResponse: ""
+      preRequest: ""
   - name: orders
     meta:
       id: fld_17b5964da63f4762bb25f732e2e6b0e7
@@ -161,8 +172,11 @@ collection:
         method: GET
         parameters:
           - name: order_id
-            disabled: true
             value: "0"
+            disabled: true
+        scripts:
+          preRequest: ""
+          afterResponse: ""
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -192,8 +206,10 @@ collection:
             }
         headers:
           - name: Content-Type
-            disabled: false
             value: application/json
+        scripts:
+          preRequest: ""
+          afterResponse: ""
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -202,6 +218,9 @@ collection:
             send: true
             store: true
           rebuildPath: true
+    scripts:
+      afterResponse: ""
+      preRequest: ""
   - url: "{{ _.base_url }}/orders/{{ _.id }}"
     name: Get an order by ID
     meta:
@@ -319,8 +338,10 @@ collection:
         }
     headers:
       - name: Content-Type
-        disabled: false
         value: application/json
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -339,6 +360,9 @@ collection:
       description: ""
       sortKey: -1752239456530
     method: GET
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -359,8 +383,11 @@ collection:
     method: GET
     parameters:
       - name: order_id
-        disabled: true
         value: "0"
+        disabled: true
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -379,6 +406,9 @@ collection:
       description: ""
       sortKey: -1752239456531
     method: DELETE
+    scripts:
+      preRequest: ""
+      afterResponse: ""
     settings:
       renderRequestBody: true
       encodeUrl: true
@@ -579,31 +609,31 @@ testSuites:
       modified: 1752239960229
       sortKey: -1752239954866
     tests:
-      - name: Returns 200
+      - name: List products - Returns 200
         meta:
           id: ut_ed69742cfb5b4ce9ad69e9722d7416ad
           created: 1752239962386
-          modified: 1752239974873
+          modified: 1752253008215
           sortKey: -1752239962386
         requestId: req_2137a93dbc5e44d29ca1e527daebe6f5
         code: |-
           const response1 = await insomnia.send();
           expect(response1.status).to.equal(200);
-      - name: Returns 20
+      - name: Place order - Returns 201
         meta:
           id: ut_522dc2e2cbb44430878ac888fbac1b5c
           created: 1752239977208
-          modified: 1752241738297
+          modified: 1752253017168
           sortKey: -1752239962385
         requestId: req_30695acecb914be0978bf46658573382
         code: |-
           const response1 = await insomnia.send();
           expect(response1.status).to.equal(201);
-      - name: Returns 200
+      - name: List orders - Returns 200
         meta:
           id: ut_36a2128bb9ba4bfbaf5694404f01a11a
           created: 1752240013282
-          modified: 1752240247565
+          modified: 1752253026213
           sortKey: -1752239962383
         requestId: req_90f37c54e7784595904055732c8f90d2
         code: |-
