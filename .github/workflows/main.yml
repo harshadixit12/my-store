@@ -29,5 +29,5 @@ jobs:
           inso --version
 
       - name: Run test suite "place an order" 
-        run: inso run test "place an order" -e env_2b8c8b --workingDir ${{ github.workspace }}/insospec.yaml
+        run: inso run test "place an order" -e "development" --workingDir ${{ github.workspace }}/insospec.yaml
 

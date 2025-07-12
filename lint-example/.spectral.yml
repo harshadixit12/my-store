@@ -5,6 +5,7 @@ rules:
     description: GET requests must not have a request body
     message: "GET method at {{path}} should not have a requestBody"
     given: $.paths[*].get
+    severity: error
     then:
       field: requestBody
       function: falsy
