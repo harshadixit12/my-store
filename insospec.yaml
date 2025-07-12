@@ -21,47 +21,13 @@ environments:
   data:
     base_url: "{{ _.scheme }}://{{ _.host }}{{ _.base_path }}"
   subEnvironments:
-    - name: specenv
+    - name: development
       meta:
         id: env_2b8c8bb89e974680aa8c6ee45aac8f69
         created: 1752032701068
-        modified: 1752032717768
+        modified: 1752284623310
         isPrivate: false
         sortKey: 1752032701068
-      data:
-        scheme: http
-        base_path: ""
-        host: localhost:3000
-    - name: OpenAPI env localhost:3000
-      meta:
-        id: env_80110e2530dd44908bd463f4ad931ed8
-        created: 1752239456529
-        modified: 1752241709832
-        isPrivate: false
-        sortKey: 1752239456529
-      data:
-        scheme: http
-        base_path: ""
-        host: localhost:3000
-        productsToOrder: "[1]"
-    - name: OpenAPI env localhost:3000
-      meta:
-        id: env_b0a497142c9c4cce87c9d4b5f7943a0d
-        created: 1752243110933
-        modified: 1752243110933
-        isPrivate: false
-        sortKey: 1752243110933
-      data:
-        scheme: http
-        base_path: ""
-        host: localhost:3000
-    - name: OpenAPI env localhost:3000
-      meta:
-        id: env_4a5c437b94db48c7b4dd63c0188b33c1
-        created: 1752253283022
-        modified: 1752253283022
-        isPrivate: false
-        sortKey: 1752253283022
       data:
         scheme: http
         base_path: ""
