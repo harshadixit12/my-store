@@ -5,18 +5,232 @@ meta:
   created: 1752032651287
   modified: 1752032651287
   description: ""
+collection:
+  - name: products
+    meta:
+      id: fld_6d115837229f49c8880fff98f6e1d271
+      created: 1752285189742
+      modified: 1752285189742
+      sortKey: -1752285189742
+      description: ""
+    children:
+      - url: "{{ _.base_url }}/products"
+        name: List all products
+        meta:
+          id: req_64453e5aae094c6990b46924639afa74
+          created: 1752285189742
+          modified: 1752285189742
+          isPrivate: false
+          description: List all products
+          sortKey: -1752285189742
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: orders
+    meta:
+      id: fld_dd7f9e1b5a694847953df59938648c26
+      created: 1752285189742
+      modified: 1752285189742
+      sortKey: -1752285189742
+      description: ""
+    children:
+      - url: "{{ _.base_url }}/orders"
+        name: Create an order
+        meta:
+          id: req_82f6159547fe4ab0a58e86eeb2e2397f
+          created: 1752285189742
+          modified: 1752285189742
+          isPrivate: false
+          description: Creates a new order with the given product IDs. Maximum of 5
+            products allowed.
+          sortKey: -1752285189742
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "productIds": [
+                0
+              ]
+            }
+        headers:
+          - name: Content-Type
+            disabled: false
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/orders"
+        name: List all orders
+        meta:
+          id: req_c0f7823458ff4db7b3381a32db465203
+          created: 1752285189742
+          modified: 1752285189742
+          isPrivate: false
+          description: Retrieve all orders. Optionally filter by `order_id` to get a
+            specific order.
+          sortKey: -1752285189742
+        method: GET
+        parameters:
+          - name: order_id
+            disabled: true
+            value: "0"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: orders
+    meta:
+      id: fld_269e2558ae4346a59d982eb2d175f4fc
+      created: 1752285288947
+      modified: 1752285288947
+      sortKey: -1752285288947
+      description: ""
+    children:
+      - url: "{{ _.base_url }}/orders"
+        name: List all orders
+        meta:
+          id: req_177dc66ec06f416db6eac00222720405
+          created: 1752285288948
+          modified: 1752285288948
+          isPrivate: false
+          description: Retrieve all orders. Optionally filter by `order_id` to get a
+            specific order.
+          sortKey: -1752285288948
+        method: GET
+        parameters:
+          - name: order_id
+            disabled: true
+            value: "0"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/orders"
+        name: Create an order
+        meta:
+          id: req_4c2f8a1f982b4ccb8e7417ff9ed6d22f
+          created: 1752285288948
+          modified: 1752285288948
+          isPrivate: false
+          description: Creates a new order with the given product IDs. Maximum of 5
+            products allowed.
+          sortKey: -1752285288948
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "productIds": [
+                0
+              ]
+            }
+        headers:
+          - name: Content-Type
+            disabled: false
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: products
+    meta:
+      id: fld_42e8436222c644cb93a8eeb5ec88cf4e
+      created: 1752285288947
+      modified: 1752285441960
+      sortKey: -1752285288947
+      description: ""
+    children:
+      - url: "{{ _.base_url }}/products"
+        name: List all products
+        meta:
+          id: req_738c3eaab76d4788a5020f455dfed173
+          created: 1752285288947
+          modified: 1752285288947
+          isPrivate: false
+          description: List all products
+          sortKey: -1752285288947
+        method: GET
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.base_url }}/products/1"
+        name: Get product by ID
+        meta:
+          id: req_4d29aa38ffcb46ec815bc1e7f70a2f0b
+          created: 1752285288948
+          modified: 1752285439525
+          isPrivate: false
+          description: Loads product given its ID
+          sortKey: -1752285288948
+        method: GET
+        scripts:
+          afterResponse: >+
+            
+            insomnia.test('Check if status is 200', () => {
+                insomnia.expect(insomnia.response.code).to.eql(200);
+            });
+
+
+
+            const jsonBody = insomnia.response.json();
+
+
+
+            insomnia.test('Check response schema', () => {
+                insomnia.expect(jsonBody).to.be.an('object').that.has.all.keys('name', 'price', 'category', 'id');
+
+            });
+
+
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:
     id: jar_5c94dd61e47951ccac6ff7ec022d6ad4e289df2a
     created: 1752032651290
-    modified: 1752241709829
+    modified: 1752285441959
 environments:
   name: Base Environment
   meta:
     id: env_5c94dd61e47951ccac6ff7ec022d6ad4e289df2a
     created: 1752032651290
-    modified: 1752253283021
+    modified: 1752285441960
     isPrivate: false
   data:
     base_url: "{{ _.scheme }}://{{ _.host }}{{ _.base_path }}"
@@ -25,9 +239,31 @@ environments:
       meta:
         id: env_2b8c8bb89e974680aa8c6ee45aac8f69
         created: 1752032701068
-        modified: 1752284623310
+        modified: 1752285441959
         isPrivate: false
         sortKey: 1752032701068
+      data:
+        scheme: http
+        base_path: ""
+        host: localhost:3000
+    - name: OpenAPI env localhost:3000
+      meta:
+        id: env_85b319449a564425bd6567d68badd334
+        created: 1752285189741
+        modified: 1752285189741
+        isPrivate: false
+        sortKey: 1752285189741
+      data:
+        scheme: http
+        base_path: ""
+        host: localhost:3000
+    - name: OpenAPI env localhost:3000
+      meta:
+        id: env_9c96ee7fa09c4e28bcc346a7875d5912
+        created: 1752285288946
+        modified: 1752285288946
+        isPrivate: false
+        sortKey: 1752285288946
       data:
         scheme: http
         base_path: ""
@@ -70,6 +306,27 @@ spec:
                     type: array
                     items:
                       $ref: "#/components/schemas/Product"
+      /products/{productId}:
+        parameters:
+          - name: productId
+            in: path
+            description: ID of the product
+            required: true
+            schema:
+              type: integer
+        get:
+          summary: Get product by ID
+          operationId: GetProductByID
+          description: Loads product given its ID
+          tags:
+            - products
+          responses:
+            "200":
+              description: Product
+              content:
+                application/json:
+                  schema:
+                    $ref: "#/components/schemas/Product"
       /orders:
         get:
           summary: List all orders
@@ -165,4 +422,44 @@ spec:
   meta:
     id: spc_df7bddfbd1b240deb4e79dd859c5c059
     created: 1752032651289
-    modified: 1752253270869
+    modified: 1752285268744
+testSuites:
+  - name: place an order
+    meta:
+      id: uts_cf0c6c30b49d40778f56f6521c7236ac
+      created: 1752285539957
+      modified: 1752285545736
+      sortKey: -1752285539957
+    tests:
+      - name: Returns 200
+        meta:
+          id: ut_34a25d0f37b14f8e98017a74e02d73a2
+          created: 1752285549214
+          modified: 1752285659789
+          sortKey: -1752285565247
+        requestId: req_64453e5aae094c6990b46924639afa74
+        code: |-
+          const response1 = await insomnia.send();
+          expect(response1.status).to.equal(200);
+      - name: Returns 201
+        meta:
+          id: ut_58f3ca0413ff463c8effa25b64634387
+          created: 1752285565246
+          modified: 1752285576026
+          sortKey: -1752285565246
+        requestId: req_4c2f8a1f982b4ccb8e7417ff9ed6d22f
+        code: |-
+          const response1 = await insomnia.send();
+          expect(response1.status).to.equal(201);
+      - name: Returns 200
+        meta:
+          id: ut_9af8085e2daa4814bd327dc455dff363
+          created: 1752285583567
+          modified: 1752285655843
+          sortKey: -1752285549213
+        requestId: req_c0f7823458ff4db7b3381a32db465203
+        code: |-
+          const response1 = await insomnia.send();
+          expect(response1.status).to.equal(200);
+
+          expect(JSON.parse(response1.data).length).to.eql(1)
