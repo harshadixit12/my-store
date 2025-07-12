@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
 
 
 // Product by ID
-/*
+
 router.get('/:id', (req, res) => {
   const productId = parseInt(req.params.id)
   let product;
@@ -39,5 +39,5 @@ router.get('/:id', (req, res) => {
   }
   res.status(404);
 });
-*/
+
 export default router;
