@@ -20,18 +20,6 @@ environments:
     isPrivate: false
   data:
     base_url: "{{ _.scheme }}://{{ _.host }}{{ _.base_path }}"
-  subEnvironments:
-    - name: development
-      meta:
-        id: env_2b8c8bb89e974680aa8c6ee45aac8f69
-        created: 1752032701068
-        modified: 1752284623310
-        isPrivate: false
-        sortKey: 1752032701068
-      data:
-        scheme: http
-        base_path: ""
-        host: localhost:3000
 spec:
   contents:
     openapi: 3.0.3
