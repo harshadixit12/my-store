@@ -3,13 +3,15 @@
 A minimal Node.js + Express-based fake store API.
 
 ---
+Supports two resources -   
+- Product
+- Order
 
 ## 📦 Features
 
-- ✅ List products in store
-- ✅ Filter products by ID
-- ✅ Create an order
-- ✅ List, and cancel orders
+- ✅ List products in store `GET /products`
+- ✅ Create an order `POST /orders`
+- ✅ List orders `GET /orders`
 
 ---
 

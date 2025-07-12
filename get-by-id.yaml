@@ -9,12 +9,12 @@
     get:
       summary: Get product by ID
       operationId: GetProductByID
-      description: Get product by ID
+      description: Loads product given its ID
       tags:
         - products
       responses:
         "200":
-          description: List of products
+          description: Product
           content:
             application/json:
               schema:
